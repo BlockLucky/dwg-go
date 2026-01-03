@@ -1,10 +1,13 @@
 # dwg-go
 
-A Go library for reading DWG/DXF files.
+## Licensing
 
-This project provides:
-- A **Go library** that exposes simple function APIs such as `ReadDWG`.
-- A **local helper service (`dwg_service`)** used internally to process DWG files.
+- The Go library in the repository root is licensed under the **BSD 3-Clause License**.
+- The `dwg_service` program under `dwg_service` is licensed under **GPLv3** and uses LibreDWG.
+
+The Go library does not link against LibreDWG.  
+All GPL-licensed code is isolated in the `dwg_service` program, which runs as a separate process.
+
 
 ## Usage
 
@@ -12,4 +15,4 @@ This project provides:
 import "github.com/you/dwg-go"
 
 doc, err := dwg.ReadDWG("a.dwg")
-````
+```
