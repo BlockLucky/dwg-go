@@ -3,15 +3,15 @@ package api_handler
 import (
 	"errors"
 	"fmt"
+	"io"
+	"net/http"
+	"strings"
+
 	"github.com/BlockLucky/dwg-go/api/api_config"
 	"github.com/BlockLucky/dwg-go/api/api_request"
 	"github.com/BlockLucky/dwg-go/api/api_response"
 	"github.com/BlockLucky/dwg-go/api/api_rpc"
 	"github.com/BlockLucky/dwg-go/config"
-	"io"
-	"log"
-	"net/http"
-	"strings"
 )
 
 func apiCommonHandle(r *http.Request) (reqModel *api_rpc.RPCRequest, err error) {

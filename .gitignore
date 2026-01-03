@@ -3,3 +3,4 @@
 .vscode/
 ./config/config.go-e
 logs/
+build/

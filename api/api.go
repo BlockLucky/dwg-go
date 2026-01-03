@@ -2,10 +2,11 @@ package api
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/BlockLucky/dwg-go/api/api_config"
 	"github.com/BlockLucky/dwg-go/api/api_handler"
 	"github.com/gorilla/mux"
-	"net/http"
 )
 
 func StartAPIService(apiCfg *api_config.ApiConfig) {

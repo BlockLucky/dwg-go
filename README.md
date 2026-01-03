@@ -16,3 +16,9 @@ import "github.com/you/dwg-go"
 
 doc, err := dwg.ReadDWG("a.dwg")
 ```
+
+## depend
+### Windows
+```shell
+
+```
