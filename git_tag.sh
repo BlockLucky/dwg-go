@@ -121,7 +121,6 @@ function gen_changelog_if_possible() {
     range_end="HEAD"
 
     if [ -z "${prev_release_sha}" ]; then
-        # 没有历史 release marker：从仓库首提交到当前 HEAD
         prev_release_sha="$(git rev-list --max-parents=0 HEAD | tail -n 1)"
         range="${prev_release_sha}..${range_end}"
         echo "[changelog] no previous Release marker found, use range ${range}"
@@ -149,8 +148,6 @@ function gen_changelog_if_possible() {
             echo "- (no commits between releases)"
             echo "- (no file changes)"
         else
-            # 概览（总增删行/文件数）
-            # 例如： " 3 files changed, 10 insertions(+), 2 deletions(-)"
             local shortstat
             shortstat="$(git diff --shortstat "${range}" 2>/dev/null || true)"
             if [ -n "${shortstat}" ]; then
@@ -159,7 +156,6 @@ function gen_changelog_if_possible() {
                 echo "- (no file changes)"
             fi
             echo
-            # 文件级统计（不输出具体 diff 内容）
             echo '```'
             git diff --stat "${range}" 2>/dev/null || true
             echo '```'
@@ -171,8 +167,6 @@ function gen_changelog_if_possible() {
         if [[ "${commit_count}" == "0" ]]; then
             echo "- (no commits between releases)"
         else
-            # 按时间正序列出，便于读
-            # 你要保留 merge 也行，把 --no-merges 去掉
             git log --reverse --no-merges --date=short --pretty=format:"- %ad %h %s" "${range}" || true
         fi
         echo
